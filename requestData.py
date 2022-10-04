@@ -6,10 +6,10 @@ def report(count, blockSize, totalSize):
   percent = int(count*blockSize*100/totalSize)
   sys.stdout.write("\r%d%%" % percent + ' complete')
   sys.stdout.flush()
-print u"输入搜索关键词"
+print(u"输入搜索关键词")
 import urllib
-name=raw_input()
-print u"搜索引擎，1:163，2: 虾米 3: 一听 ,4: 酷狗 5:酷我"
+name=input()
+print(u"搜索引擎，1:163，2: 虾米 3: 一听 ,4: 酷狗 5:酷我")
 downlist =[]
 namelist=[]
 type= input()
@@ -51,19 +51,19 @@ myresult=json.loads(result.text.encode('utf-8'))
 try:
     for temp in myresult['data']:
         #downlist.append(temp)
-        print x,temp['name'],temp['author']
+        print(x,temp['name'],temp['author'])
         downlist.append(temp['music'])
         getname=temp['name']+"_____"+temp['author']
         namelist.append(getname)
         x+=1
     #print requests.getmethod("http://music.ifkdy.com/",data=mydata).text
     #print result.text
-    print "你要下哪一首"
+    print("你要下哪一首")
     select=input()
    # print downlist[select]
-    filename=u"/Users/sam/Downloads/d盘/music/"+namelist[select]+'.mp3'
+    filename=u"./"+namelist[select]+'.mp3'
     #filename=filename.decode('utf-8').encode('utf-8')
     urllib.urlretrieve(downlist[select],filename,reporthook=report)
 
 except:
-    print "没有结果"
+    print("没有结果")
